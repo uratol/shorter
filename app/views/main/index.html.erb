@@ -1,0 +1,20 @@
+<h1>
+  SHORTER
+</h1>
+
+<%= form_tag '/', id: :encode, remote: true, format: :json do |f| %>
+    <%= label_tag(:url, "Enter url:") %>
+    <%= text_field_tag(:url) %>
+    <%= submit_tag 'shorter! '%>
+<% end %>
+
+<br/>
+
+<div id="result_container">
+    <a id="result" href="#"></a>
+    <button id="copy">copy to clipboard</button>
+</div>
+
+<div id="error_container">
+  <div id="error"></div>
+</div>
