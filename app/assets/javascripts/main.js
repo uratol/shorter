@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function(){
     });
 
     $("#copy").click(function(){
-      document.execCommand("copy");
+      copyToClipboard( $("#result").get(0) );
     }
     )
 });
