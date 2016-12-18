@@ -6,7 +6,12 @@ class Link < ActiveRecord::Base
   validates :url, presence: true, format: {with: URI.regexp}
 
   def self.encode(url)
-    encode_number(find_or_create_by!(url: url.strip).id)
+    begin
+      link = find_or_create_by!(url: url.strip)
+    rescue ActiveRecord::RecordNotUnique
+      link = find_by(url: url.strip) # for handling a synchronous inserts the same urls
+    end
+    encode_number(link.id)
   end
 
   def self.decode(key)

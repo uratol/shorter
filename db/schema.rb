@@ -17,4 +17,6 @@ ActiveRecord::Schema.define(version: 20161217085706) do
     t.text "url", null: false
   end
 
+  add_index "links", ["url"], name: "index_links_on_url", unique: true
+
 end
